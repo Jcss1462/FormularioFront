@@ -29,7 +29,7 @@ export default function FormsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-brand-white px-6 py-10">
+    <div className="bg-brand-white px-6 py-10">
       {/* Header */}
       <h1 className="text-3xl font-bold text-brand-dark mb-6">Formularios</h1>
 

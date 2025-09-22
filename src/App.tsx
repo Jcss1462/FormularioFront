@@ -4,6 +4,7 @@ import FormsPage from "./pages/FormsPage"
 import FormPage from "./pages/FormPage"
 import ResponsesPage from "./pages/ResponsesPage"
 import ResponseDetailPage from "./pages/ResponseDetailPage"
+import LoadingOverlay from "./components/LoadingOverlay"
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/responses" element={<ResponsesPage />} />
         <Route path="/response/:id" element={<ResponseDetailPage />} />
       </Routes>
+      <LoadingOverlay />
     </BrowserRouter>
   )
 }

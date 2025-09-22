@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import type { FormResumeModel } from "../models/FormResumeModel";
 import { getForms } from "../services/formsService";
+import { useUIStore } from "../store/useUIStore";
 
 
 export default function FormsPage() {
   const [search, setSearch] = useState("");
   const [forms, setForms] = useState<FormResumeModel[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { setLoading } = useUIStore();
 
   useEffect(() => {
     const fetchForms = async () => {
       try {
+        setLoading(true);
         const data = await getForms();
         setForms(data);
       } catch (error) {
@@ -20,12 +22,8 @@ export default function FormsPage() {
       }
     };
     fetchForms();
-  }, []);
+  }, [setLoading]);
 
-  if (loading) {
-    return <div className="text-center text-brand-dark">Cargando formularios...</div>;
-  }
-  
   const filteredForms = forms.filter((form) =>
     form.nombre.toLowerCase().includes(search.toLowerCase())
   );

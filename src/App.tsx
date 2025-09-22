@@ -4,8 +4,7 @@ import FormPage from "./pages/FormPage"
 import ResponsesPage from "./pages/ResponsesPage"
 import ResponseDetailPage from "./pages/ResponseDetailPage"
 import LoadingOverlay from "./components/LoadingOverlay"
-import MainLayout from "./layouts/mainLayout"
-
+import MainComponentLayout from "./layouts/MainComponentLayout"
 
 function App() {
 
@@ -13,7 +12,7 @@ function App() {
     <BrowserRouter>
       {/* Layout envuelve todas las rutas */}
       <Routes>
-        <Route element={<MainLayout />}>
+        <Route element={<MainComponentLayout />}>
           <Route path="/" element={<FormsPage />} />
           <Route path="/form/:id" element={<FormPage />} />
           <Route path="/responses" element={<ResponsesPage />} />

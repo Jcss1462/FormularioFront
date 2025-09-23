@@ -70,18 +70,24 @@ export default function FormsPage() {
               <p>
                 Promedio: <span className="font-medium">{form.puntajePromedio.toFixed(1)}</span>
               </p>
-              <div className="mt-3 flex gap-2">
-                <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition"
-                  onClick={() => toResponsesPage(form.idFormulario)}
-                >
-                  Ver Respuestas
-                </button>
-                <button className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"
+              <div className="mt-3 flex justify-left gap-2">
+                <button
+                  className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"
                   onClick={() => toFormPage(form.idFormulario)}
                 >
                   Responder
                 </button>
+
+                {form.cantidadRespuestas > 0 && (
+                  <button
+                    className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition"
+                    onClick={() => toResponsesPage(form.idFormulario)}
+                  >
+                    Ver Respuestas
+                  </button>
+                )}
               </div>
+
             </div>
           ))
         ) : (
@@ -116,17 +122,24 @@ export default function FormsPage() {
                   <td className="px-4 py-3 text-center">
                     {form.puntajePromedio.toFixed(1)}
                   </td>
-                  <td className="px-4 py-3 flex justify-center gap-2">
-                    <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition"
-                      onClick={() => toResponsesPage(form.idFormulario)}
-                    >
-                      Ver Respuestas
-                    </button>
-                    <button className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"
-                      onClick={() => toFormPage(form.idFormulario)}
-                    >
-                      Responder
-                    </button>
+                  <td className="px-4 py-3">
+                    <div className="flex justify-center gap-2">
+                      <button
+                        className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"
+                        onClick={() => toFormPage(form.idFormulario)}
+                      >
+                        Responder
+                      </button>
+
+                      {form.cantidadRespuestas > 0 && (
+                        <button
+                          className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition"
+                          onClick={() => toResponsesPage(form.idFormulario)}
+                        >
+                          Ver Respuestas
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))

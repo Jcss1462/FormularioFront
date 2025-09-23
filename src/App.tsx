@@ -15,7 +15,7 @@ function App() {
         <Route element={<MainComponentLayout />}>
           <Route path="/" element={<FormsPage />} />
           <Route path="/form/:id" element={<AnswerFormPage />} />
-          <Route path="/responses" element={<ResponsesPage />} />
+          <Route path="/responses/:id" element={<ResponsesPage />} />
           <Route path="/response/:id" element={<ResponseDetailPage />} />
         </Route>
       </Routes>

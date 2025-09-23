@@ -30,6 +30,10 @@ export default function FormsPage() {
     navigate(`/form/${id}`);
   };
 
+  const toResponsesPage = (id: number) => {
+    navigate(`/responses/${id}`);
+  };
+
   const filteredForms = forms.filter((form) =>
     form.nombre.toLowerCase().includes(search.toLowerCase())
   );
@@ -67,7 +71,9 @@ export default function FormsPage() {
                 Promedio: <span className="font-medium">{form.puntajePromedio.toFixed(1)}</span>
               </p>
               <div className="mt-3 flex gap-2">
-                <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition">
+                <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition"
+                  onClick={() => toResponsesPage(form.idFormulario)}
+                >
                   Ver Respuestas
                 </button>
                 <button className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"
@@ -111,7 +117,9 @@ export default function FormsPage() {
                     {form.puntajePromedio.toFixed(1)}
                   </td>
                   <td className="px-4 py-3 flex justify-center gap-2">
-                    <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition">
+                    <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition"
+                      onClick={() => toResponsesPage(form.idFormulario)}
+                    >
                       Ver Respuestas
                     </button>
                     <button className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"

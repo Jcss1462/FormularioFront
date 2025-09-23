@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { ResumeForm } from "../models/ResponseResume/ResumeForm";
 import { useUIStore } from "../store/useUIStore";
-import { getFormResult } from "../services/formsService";
+import { getFormResults } from "../services/formsService";
 import { toast } from "sonner";
 
 export default function ResponsePage() {
@@ -15,7 +15,7 @@ export default function ResponsePage() {
         const fetchResults = async () => {
             try {
                 setLoading(true);
-                const data = await getFormResult(id);
+                const data = await getFormResults(id);
                 setFormResult(data);
             } catch (error) {
                 toast.error("❌ Error al cargar resultados: " + error);

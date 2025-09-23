@@ -27,7 +27,7 @@ export const sendFormResponses = async (payload: AnswerForm): Promise<void> => {
 };
 
 
-export const getFormResult = async (id: string | undefined): Promise<ResumeForm> => {
+export const getFormResults = async (id: string | undefined): Promise<ResumeForm> => {
   const { data } = await api.get<ResumeForm>("/Respuestas/ObtenerResultadosFormulario/" + id);
   return data;
 };

@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import type { FormResumeModel } from "../models/FormResumeModel";
 import { getForms } from "../services/formsService";
 import { useUIStore } from "../store/useUIStore";
+import { useNavigate } from "react-router-dom";
 
 
 export default function FormsPage() {
   const [search, setSearch] = useState("");
   const [forms, setForms] = useState<FormResumeModel[]>([]);
   const { setLoading } = useUIStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchForms = async () => {
@@ -23,6 +25,10 @@ export default function FormsPage() {
     };
     fetchForms();
   }, [setLoading]);
+
+  const toFormPage = (id: number) => {
+    navigate(`/form/${id}`);
+  };
 
   const filteredForms = forms.filter((form) =>
     form.nombre.toLowerCase().includes(search.toLowerCase())
@@ -61,10 +67,12 @@ export default function FormsPage() {
                 Promedio: <span className="font-medium">{form.puntajePromedio.toFixed(1)}</span>
               </p>
               <div className="mt-3 flex gap-2">
-                <button className="bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition">
+                <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition">
                   Ver Respuestas
                 </button>
-                <button className="bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition">
+                <button className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"
+                  onClick={() => toFormPage(form.idFormulario)}
+                >
                   Responder
                 </button>
               </div>
@@ -103,10 +111,12 @@ export default function FormsPage() {
                     {form.puntajePromedio.toFixed(1)}
                   </td>
                   <td className="px-4 py-3 flex justify-center gap-2">
-                    <button className="bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition">
+                    <button className="cursor-pointer bg-brand-light text-white px-3 py-1 rounded hover:bg-brand-dark transition">
                       Ver Respuestas
                     </button>
-                    <button className="bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition">
+                    <button className="cursor-pointer bg-brand-accent text-white px-3 py-1 rounded hover:bg-orange-600 transition"
+                      onClick={() => toFormPage(form.idFormulario)}
+                    >
                       Responder
                     </button>
                   </td>

@@ -1,5 +1,5 @@
 export interface FormResumeModel {
-    idFormulario: string;
+    idFormulario: number;
     nombre: string;
     cantidadRespuestas: number;
     puntajePromedio: number;

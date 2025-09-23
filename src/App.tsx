@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import FormsPage from "./pages/FormsPage"
-import FormPage from "./pages/FormPage"
 import ResponsesPage from "./pages/ResponsesPage"
 import ResponseDetailPage from "./pages/ResponseDetailPage"
 import LoadingOverlay from "./components/LoadingOverlay"
 import MainComponentLayout from "./layouts/MainComponentLayout"
+import AnswerFormPage from "./pages/AnswerFormPage"
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route element={<MainComponentLayout />}>
           <Route path="/" element={<FormsPage />} />
-          <Route path="/form/:id" element={<FormPage />} />
+          <Route path="/form/:id" element={<AnswerFormPage />} />
           <Route path="/responses" element={<ResponsesPage />} />
           <Route path="/response/:id" element={<ResponseDetailPage />} />
         </Route>

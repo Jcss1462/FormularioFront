@@ -3,6 +3,7 @@ import type { FormResumeModel } from "../models/FormResumeModel";
 import type { QuestionFormModel } from "../models/QuestionForm/QuestionFormModel";
 import type { AnswerForm } from "../models/AnswerForm/AnswerForm";
 import type { ResumeForm } from "../models/ResponseResume/ResumeForm";
+import type { ResponseDetailForm } from "../models/ResponseDetail/ResponseDetailForm";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -28,5 +29,10 @@ export const sendFormResponses = async (payload: AnswerForm): Promise<void> => {
 
 export const getFormResult = async (id: string | undefined): Promise<ResumeForm> => {
   const { data } = await api.get<ResumeForm>("/Respuestas/ObtenerResultadosFormulario/" + id);
+  return data;
+};
+
+export const getResultDetail = async (id: string | undefined): Promise<ResponseDetailForm> => {
+  const { data } = await api.get<ResponseDetailForm>("/Respuestas/ObtenerDetalleRespuesta/" + id);
   return data;
 };

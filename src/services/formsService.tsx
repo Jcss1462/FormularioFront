@@ -2,6 +2,7 @@ import axios from "axios";
 import type { FormResumeModel } from "../models/FormResumeModel";
 import type { QuestionFormModel } from "../models/QuestionForm/QuestionFormModel";
 import type { AnswerForm } from "../models/AnswerForm/AnswerForm";
+import type { ResumeForm } from "../models/ResponseResume/ResumeForm";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -22,4 +23,10 @@ export const getFormQuestions = async (id: string | undefined): Promise<Question
 
 export const sendFormResponses = async (payload: AnswerForm): Promise<void> => {
   await api.post("/Respuestas/EnviarRespuestas", payload);
+};
+
+
+export const getFormResult = async (id: string | undefined): Promise<ResumeForm> => {
+  const { data } = await api.get<ResumeForm>("/Respuestas/ObtenerResultadosFormulario/" + id);
+  return data;
 };

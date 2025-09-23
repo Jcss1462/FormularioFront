@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<FormsPage />} />
           <Route path="/form/:id" element={<AnswerFormPage />} />
           <Route path="/responses/:id" element={<ResponsesPage />} />
-          <Route path="/response/:id" element={<ResponseDetailPage />} />
+          <Route path="/responseDetail/:id" element={<ResponseDetailPage />} />
         </Route>
       </Routes>
       <LoadingOverlay />
